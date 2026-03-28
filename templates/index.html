@@ -15,13 +15,7 @@
   --muted: #8a8580;
   --accent: #2563eb;
   --accent-light: #eff6ff;
-  --green: #16a34a;
-  --green-light: #f0fdf4;
-  --orange: #ea580c;
-  --purple: #7c3aed;
-  --purple-light: #f5f3ff;
   --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,7 +30,6 @@ body {
   overflow: hidden;
 }
 
-/* Top bar */
 .topbar {
   height: 52px;
   background: var(--surface);
@@ -48,19 +41,10 @@ body {
   flex-shrink: 0;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: -0.3px;
-}
-
+.logo { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; letter-spacing: -0.3px; }
 .logo-dot { color: var(--accent); font-size: 20px; line-height: 1; }
 
 .paper-indicator {
-  display: flex;
   align-items: center;
   gap: 8px;
   background: var(--accent-light);
@@ -82,7 +66,7 @@ body {
   font-family: 'DM Mono', monospace;
 }
 
-.topbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 
 .new-btn {
   background: none;
@@ -97,14 +81,8 @@ body {
 }
 .new-btn:hover { border-color: var(--text); color: var(--text); }
 
-/* Main layout */
-.main {
-  display: flex;
-  flex: 1;
-  overflow: hidden;
-}
+.main { display: flex; flex: 1; overflow: hidden; }
 
-/* Upload screen */
 .upload-screen {
   flex: 1;
   display: flex;
@@ -114,27 +92,10 @@ body {
   padding: 40px;
 }
 
-.upload-hero {
-  text-align: center;
-  max-width: 480px;
-  margin-bottom: 32px;
-}
-
-.upload-hero h1 {
-  font-size: 32px;
-  font-weight: 600;
-  letter-spacing: -1px;
-  margin-bottom: 12px;
-  line-height: 1.2;
-}
-
+.upload-hero { text-align: center; max-width: 480px; margin-bottom: 32px; }
+.upload-hero h1 { font-size: 32px; font-weight: 600; letter-spacing: -1px; margin-bottom: 12px; line-height: 1.2; }
 .upload-hero h1 span { color: var(--accent); }
-
-.upload-hero p {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.6;
-}
+.upload-hero p { color: var(--muted); font-size: 15px; line-height: 1.6; }
 
 .upload-zone {
   width: 100%;
@@ -147,35 +108,19 @@ body {
   transition: all 0.2s;
   background: var(--surface);
 }
-
-.upload-zone:hover, .upload-zone.drag-over {
-  border-color: var(--accent);
-  background: var(--accent-light);
-}
+.upload-zone:hover, .upload-zone.drag-over { border-color: var(--accent); background: var(--accent-light); }
 
 .upload-icon {
-  width: 48px;
-  height: 48px;
+  width: 48px; height: 48px;
   background: var(--accent-light);
   border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   margin: 0 auto 16px;
   font-size: 22px;
 }
 
-.upload-zone h3 {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.upload-zone p {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
+.upload-zone h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.upload-zone p { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
 
 .upload-btn-label {
   display: inline-block;
@@ -189,304 +134,184 @@ body {
   transition: opacity 0.15s;
 }
 .upload-btn-label:hover { opacity: 0.9; }
-
 #fileInput { display: none; }
 
-.sample-questions {
-  margin-top: 32px;
-  max-width: 480px;
-  width: 100%;
-}
-
+.sample-questions { margin-top: 32px; max-width: 480px; width: 100%; }
 .sample-questions h4 {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--muted);
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
+  font-size: 11px; font-weight: 500; color: var(--muted);
+  letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 12px;
 }
-
-.sample-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
+.sample-chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .sample-chip {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: var(--muted);
-  cursor: default;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 6px 14px; font-size: 12px; color: var(--muted);
 }
 
-/* Chat screen */
-.chat-screen {
-  display: none;
-  flex: 1;
-  overflow: hidden;
-}
+.chat-screen { display: none; flex: 1; overflow: hidden; }
+.chat-screen.visible { display: flex; }
 
-.chat-screen.visible {
-  display: flex;
-}
-
-/* Sidebar */
 .sidebar {
   width: 260px;
   border-right: 1px solid var(--border);
   background: var(--surface);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  flex-shrink: 0;
+  display: flex; flex-direction: column;
+  overflow: hidden; flex-shrink: 0;
 }
-
-.sidebar-header {
-  padding: 16px;
-  border-bottom: 1px solid var(--border2);
-}
-
+.sidebar-header { padding: 16px; border-bottom: 1px solid var(--border2); }
 .sidebar-header h3 {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--muted);
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
+  font-size: 11px; font-weight: 500; color: var(--muted);
+  letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 10px;
 }
-
-.suggested-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
+.suggested-list { display: flex; flex-direction: column; gap: 4px; }
 .suggested-q {
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 8px 10px;
-  border-radius: 7px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12.5px;
-  color: var(--text);
-  cursor: pointer;
-  line-height: 1.4;
-  transition: background 0.15s;
+  background: none; border: none; text-align: left;
+  padding: 8px 10px; border-radius: 7px;
+  font-family: 'DM Sans', sans-serif; font-size: 12.5px; color: var(--text);
+  cursor: pointer; line-height: 1.4; transition: background 0.15s;
 }
 .suggested-q:hover { background: var(--bg); }
 .suggested-q::before { content: '→ '; color: var(--accent); font-weight: 600; }
 
-.sidebar-footer {
-  padding: 16px;
+/* ── NEW: Download Report Button ── */
+.sidebar-download {
+  padding: 14px 16px;
   border-top: 1px solid var(--border2);
-  margin-top: auto;
+  display: none;
 }
-
-.paper-meta {
-  font-size: 11px;
-  color: var(--muted);
-  line-height: 1.5;
+.sidebar-download.visible { display: block; }
+.download-report-btn {
+  width: 100%;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: opacity 0.15s, transform 0.1s;
 }
+.download-report-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.download-report-btn:active { transform: translateY(0); }
+.download-report-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+/* ─────────────────────────────── */
 
+.sidebar-footer { padding: 16px; border-top: 1px solid var(--border2); margin-top: auto; }
+.paper-meta { font-size: 11px; color: var(--muted); line-height: 1.5; }
 .paper-meta strong { color: var(--text); display: block; font-size: 12px; margin-bottom: 2px; word-break: break-word; }
 
-/* Chat area */
-.chat-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background: var(--bg);
-}
+.chat-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: var(--bg); }
 
 .messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  flex: 1; overflow-y: auto; padding: 24px;
+  display: flex; flex-direction: column; gap: 24px;
 }
 
-/* Message */
 .message { display: flex; flex-direction: column; gap: 12px; animation: msgIn 0.3s ease; }
 @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
 .msg-question {
   align-self: flex-end;
-  background: var(--accent);
-  color: white;
+  background: var(--accent); color: white;
   padding: 10px 16px;
   border-radius: 18px 18px 4px 18px;
-  font-size: 14px;
-  max-width: 70%;
-  line-height: 1.5;
+  font-size: 14px; max-width: 70%; line-height: 1.5;
 }
 
 .msg-response {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 4px 18px 18px 18px;
-  overflow: hidden;
-  max-width: 90%;
+  overflow: hidden; max-width: 90%;
   box-shadow: var(--shadow);
 }
 
 .msg-answer {
-  padding: 16px 18px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--text);
-  border-bottom: 1px solid var(--border2);
+  padding: 16px 18px; font-size: 14px; line-height: 1.7;
+  color: var(--text); border-bottom: 1px solid var(--border2);
 }
 
-.msg-visual {
-  padding: 16px 18px;
-  background: #fdfcfb;
-}
+.msg-visual { padding: 16px 18px; background: #fdfcfb; }
 
 .visual-label {
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--muted);
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  font-size: 10px; font-weight: 500; color: var(--muted);
+  letter-spacing: 0.8px; text-transform: uppercase;
+  margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
 }
+.visual-label::before { content: ''; width: 12px; height: 2px; background: var(--accent); border-radius: 1px; }
 
-.visual-label::before {
-  content: '';
-  width: 12px;
-  height: 2px;
-  background: var(--accent);
-  border-radius: 1px;
-}
-
-/* Input area */
-.input-area {
-  padding: 16px 24px 20px;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-}
-
+.input-area { padding: 16px 24px 20px; background: var(--surface); border-top: 1px solid var(--border); }
 .input-row {
-  display: flex;
-  gap: 10px;
-  align-items: flex-end;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 12px;
-  transition: border-color 0.2s;
+  display: flex; gap: 10px; align-items: flex-end;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 10px 12px; transition: border-color 0.2s;
 }
-
 .input-row:focus-within { border-color: var(--accent); }
 
 #chatInput {
-  flex: 1;
-  background: none;
-  border: none;
-  outline: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  color: var(--text);
-  resize: none;
-  min-height: 22px;
-  max-height: 100px;
-  line-height: 1.5;
+  flex: 1; background: none; border: none; outline: none;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+  resize: none; min-height: 22px; max-height: 100px; line-height: 1.5;
 }
-
 #chatInput::placeholder { color: var(--muted); }
 
 .send-btn {
-  width: 32px;
-  height: 32px;
-  background: var(--accent);
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: opacity 0.15s;
-  font-size: 14px;
+  width: 32px; height: 32px; background: var(--accent);
+  border: none; border-radius: 8px; color: white; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: opacity 0.15s; font-size: 14px;
 }
 .send-btn:hover { opacity: 0.9; }
 .send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* Loading bubble */
 .loading-bubble {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 4px 18px 18px 18px;
-  padding: 16px 20px;
-  max-width: 200px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 4px 18px 18px 18px; padding: 16px 20px;
+  max-width: 200px; display: flex; align-items: center; gap: 10px;
   box-shadow: var(--shadow);
 }
-
-.typing-dots {
-  display: flex;
-  gap: 4px;
-}
-
+.typing-dots { display: flex; gap: 4px; }
 .typing-dots span {
-  width: 7px;
-  height: 7px;
-  background: var(--muted);
-  border-radius: 50%;
-  animation: bounce 1.2s infinite;
+  width: 7px; height: 7px; background: var(--muted);
+  border-radius: 50%; animation: bounce 1.2s infinite;
 }
 .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
 .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-
 @keyframes bounce {
   0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
   30% { transform: translateY(-6px); opacity: 1; }
 }
-
 .loading-text { font-size: 12px; color: var(--muted); }
 
-/* Upload loading */
-.upload-loading {
-  display: none;
-  text-align: center;
-  padding: 32px;
-}
-
+.upload-loading { display: none; text-align: center; padding: 32px; }
 .upload-loading.visible { display: block; }
-
 .upload-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--border);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  width: 40px; height: 40px;
+  border: 3px solid var(--border); border-top-color: var(--accent);
+  border-radius: 50%; animation: spin 0.8s linear infinite;
   margin: 0 auto 16px;
 }
-
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* SVG Visuals */
 .visual-svg { width: 100%; overflow: visible; }
-
-/* Scrollbar */
 .messages::-webkit-scrollbar { width: 4px; }
 .messages::-webkit-scrollbar-track { background: transparent; }
 .messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+#apiKeyInput {
+  width: 240px; padding: 5px 10px; border-radius: 6px;
+  border: 1px solid var(--border);
+  font-family: 'DM Sans', sans-serif; font-size: 12px;
+  color: var(--text); background: var(--bg); outline: none;
+  transition: border-color 0.2s;
+}
+#apiKeyInput:focus { border-color: var(--accent); }
+#apiKeyInput::placeholder { color: var(--muted); }
 </style>
 </head>
 <body>
@@ -501,13 +326,15 @@ body {
     <span class="pages" id="pageCount">0p</span>
   </div>
   <div class="topbar-right">
+    <input type="password" id="apiKeyInput" placeholder="gsk_... (Groq API key)" />
+    <button class="new-btn" onclick="saveKey()" style="border-color:var(--accent);color:var(--accent)">Save Key</button>
+    <span id="keyStatus" style="font-size:11px;color:var(--muted)"></span>
     <button class="new-btn" onclick="resetApp()">New Paper</button>
   </div>
 </div>
 
 <div class="main">
 
-  <!-- Upload Screen -->
   <div class="upload-screen" id="uploadScreen">
     <div class="upload-hero">
       <h1>Chat with any paper.<br><span>See the answers.</span></h1>
@@ -541,16 +368,27 @@ body {
         <div class="sample-chip">What are the limitations?</div>
       </div>
     </div>
+
+    <p style="margin-top:20px;font-size:11px;color:var(--muted);text-align:center">
+      Requires a free Groq API key —
+      <a href="https://console.groq.com" target="_blank" style="color:var(--accent);text-decoration:none">get one free at console.groq.com</a>
+    </p>
   </div>
 
-  <!-- Chat Screen -->
   <div class="chat-screen" id="chatScreen">
-
     <div class="sidebar">
       <div class="sidebar-header">
         <h3>Suggested Questions</h3>
         <div class="suggested-list" id="suggestedList"></div>
       </div>
+
+      <!-- NEW: Download Report Section -->
+      <div class="sidebar-download" id="sidebarDownload">
+        <button class="download-report-btn" id="downloadReportBtn" onclick="downloadReport()">
+          ⬇ Download Full Report
+        </button>
+      </div>
+
       <div class="sidebar-footer">
         <div class="paper-meta">
           <strong id="sidebarPaperName"></strong>
@@ -569,15 +407,30 @@ body {
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
 <script>
-// ─── State ───────────────────────────────────────────────────────
 let isLoading = false;
+let currentSessionId = '';
+let questionCount = 0;  // NEW
 
-// ─── Upload ───────────────────────────────────────────────────────
+function saveKey() {
+  const key = document.getElementById('apiKeyInput').value.trim();
+  if (key.startsWith('gsk_')) {
+    sessionStorage.setItem('groq_key', key);
+    document.getElementById('keyStatus').textContent = '✓ Saved';
+    document.getElementById('keyStatus').style.color = '#16a34a';
+  } else {
+    document.getElementById('keyStatus').textContent = '✗ Invalid key';
+    document.getElementById('keyStatus').style.color = '#ef4444';
+  }
+}
+
+function getKey() {
+  return sessionStorage.getItem('groq_key') || '';
+}
+
 function handleDragOver(e) {
   e.preventDefault();
   document.getElementById('uploadZone').classList.add('drag-over');
@@ -597,6 +450,11 @@ function handleFileSelect(e) {
 }
 
 async function uploadFile(file) {
+  if (!getKey()) {
+    alert('Please enter your Groq API key in the top bar first.\nGet one free at console.groq.com');
+    return;
+  }
+
   document.getElementById('uploadZone').style.display = 'none';
   document.getElementById('uploadLoading').classList.add('visible');
 
@@ -604,27 +462,27 @@ async function uploadFile(file) {
   formData.append('file', file);
 
   try {
-    const resp = await fetch('/upload', { method: 'POST', body: formData });
+    const resp = await fetch('/upload', {
+      method: 'POST',
+      headers: { 'X-API-Key': getKey() },
+      body: formData
+    });
     const data = await resp.json();
     if (!data.success) throw new Error(data.error);
 
-    // Update UI
+    currentSessionId = data.session_id;
+    questionCount = 0;  // NEW: reset counter
+
     document.getElementById('paperName').textContent = data.paper_name.replace('.pdf','');
     document.getElementById('pageCount').textContent = data.page_count + 'p';
     document.getElementById('paperIndicator').style.display = 'flex';
     document.getElementById('sidebarPaperName').textContent = data.paper_name;
     document.getElementById('sidebarPageCount').textContent = data.page_count + ' pages';
 
-    // Suggested questions from summary
-    const summary = data.summary;
-    renderSuggestedQuestions(summary);
-
-    // Show chat
+    renderSuggestedQuestions();
     document.getElementById('uploadScreen').style.display = 'none';
     document.getElementById('chatScreen').classList.add('visible');
-
-    // Welcome message
-    addWelcomeMessage(summary.answer);
+    addWelcomeMessage(data.summary.answer);
 
   } catch(e) {
     alert('Error: ' + e.message);
@@ -633,7 +491,7 @@ async function uploadFile(file) {
   }
 }
 
-function renderSuggestedQuestions(summary) {
+function renderSuggestedQuestions() {
   const list = document.getElementById('suggestedList');
   const questions = [
     'Explain the methodology',
@@ -663,7 +521,6 @@ function addWelcomeMessage(summary) {
   messages.appendChild(div);
 }
 
-// ─── Chat ───────────────────────────────────────────────────────
 function askQuestion(q) {
   document.getElementById('chatInput').value = q;
   sendMessage();
@@ -694,13 +551,11 @@ async function sendMessage() {
 
   const messages = document.getElementById('messages');
 
-  // Add question bubble
   const msgDiv = document.createElement('div');
   msgDiv.className = 'message';
   msgDiv.innerHTML = `<div class="msg-question">${escapeHtml(question)}</div>`;
   messages.appendChild(msgDiv);
 
-  // Add loading bubble
   const loadingDiv = document.createElement('div');
   loadingDiv.className = 'message';
   loadingDiv.id = 'loadingBubble';
@@ -716,16 +571,14 @@ async function sendMessage() {
   try {
     const resp = await fetch('/chat', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({question})
+      headers: { 'Content-Type': 'application/json', 'X-API-Key': getKey() },
+      body: JSON.stringify({ question, session_id: currentSessionId })
     });
     const data = await resp.json();
     if (!data.success) throw new Error(data.error);
 
-    // Remove loading
     document.getElementById('loadingBubble').remove();
 
-    // Add response
     const result = data.result;
     const responseDiv = document.createElement('div');
     responseDiv.className = 'message';
@@ -745,9 +598,14 @@ async function sendMessage() {
     `;
     messages.appendChild(responseDiv);
 
-    // Animate visual after DOM insertion
     if (result.visual_type && result.visual_type !== 'none') {
       setTimeout(() => animateVisual(responseDiv), 100);
+    }
+
+    // NEW: Show download button after first answer
+    questionCount++;
+    if (questionCount === 1) {
+      document.getElementById('sidebarDownload').classList.add('visible');
     }
 
   } catch(e) {
@@ -763,12 +621,50 @@ async function sendMessage() {
   scrollBottom();
 }
 
+// NEW: Download report function
+async function downloadReport() {
+  if (!currentSessionId) return;
+  const btn = document.getElementById('downloadReportBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Generating…';
+
+  try {
+    const resp = await fetch(`/report?session_id=${currentSessionId}`, {
+      headers: { 'X-API-Key': getKey() }
+    });
+
+    if (!resp.ok) {
+      const data = await resp.json();
+      alert(data.error || 'Failed to generate report');
+      btn.disabled = false;
+      btn.textContent = '⬇ Download Full Report';
+      return;
+    }
+
+    const blob = await resp.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const cd = resp.headers.get('Content-Disposition') || '';
+    const match = cd.match(/filename="(.+)"/);
+    a.download = match ? match[1] : 'PaperMind_Report.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch(e) {
+    alert('Download failed: ' + e.message);
+  }
+
+  btn.disabled = false;
+  btn.textContent = '⬇ Download Full Report';
+}
+
 function scrollBottom() {
   const m = document.getElementById('messages');
   setTimeout(() => m.scrollTop = m.scrollHeight, 50);
 }
 
-// ─── Visual Renderers ───────────────────────────────────────────
 function renderVisual(type, data) {
   switch(type) {
     case 'flowchart': return renderFlowchart(data);
@@ -782,236 +678,150 @@ function renderVisual(type, data) {
 }
 
 function renderFlowchart(data) {
-  const nodes = data.nodes || [];
-  const edges = data.edges || [];
-  const nodeH = 40, nodeW = 140, gapY = 70, svgW = 500;
-
-  // Simple top-to-bottom layout
+  const nodes = data.nodes || [], edges = data.edges || [];
+  const nodeH=40, nodeW=140, gapY=70, svgW=500;
   const positions = {};
-  nodes.forEach((n, i) => {
-    positions[n.id] = { x: svgW/2 - nodeW/2, y: 20 + i * (nodeH + gapY) };
-  });
-
-  const totalH = nodes.length * (nodeH + gapY) + 20;
-
-  const nodeColors = { start: '#dbeafe', end: '#fce7f3', decision: '#fef9c3', process: '#f0fdf4' };
-  const nodeBorders = { start: '#93c5fd', end: '#f9a8d4', decision: '#fde047', process: '#86efac' };
+  nodes.forEach((n,i) => { positions[n.id] = { x: svgW/2-nodeW/2, y: 20+i*(nodeH+gapY) }; });
+  const totalH = nodes.length*(nodeH+gapY)+20;
+  const nodeColors = { start:'#dbeafe', end:'#fce7f3', decision:'#fef9c3', process:'#f0fdf4' };
+  const nodeBorders = { start:'#93c5fd', end:'#f9a8d4', decision:'#fde047', process:'#86efac' };
 
   const nodesSvg = nodes.map(n => {
-    const p = positions[n.id];
-    const fill = nodeColors[n.type] || '#f8fafc';
-    const stroke = nodeBorders[n.type] || '#cbd5e1';
-    const isDecision = n.type === 'decision';
-    const shape = isDecision
-      ? `<polygon points="${p.x + nodeW/2},${p.y} ${p.x + nodeW},${p.y + nodeH/2} ${p.x + nodeW/2},${p.y + nodeH} ${p.x},${p.y + nodeH/2}" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`
+    const p=positions[n.id], fill=nodeColors[n.type]||'#f8fafc', stroke=nodeBorders[n.type]||'#cbd5e1';
+    const shape = n.type==='decision'
+      ? `<polygon points="${p.x+nodeW/2},${p.y} ${p.x+nodeW},${p.y+nodeH/2} ${p.x+nodeW/2},${p.y+nodeH} ${p.x},${p.y+nodeH/2}" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`
       : `<rect x="${p.x}" y="${p.y}" width="${nodeW}" height="${nodeH}" rx="8" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`;
-    return `
-      ${shape}
-      <text x="${p.x + nodeW/2}" y="${p.y + nodeH/2 + 5}" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="12" fill="#1a1a1a">${n.label}</text>
-    `;
+    return `${shape}<text x="${p.x+nodeW/2}" y="${p.y+nodeH/2+5}" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="12" fill="#1a1a1a">${n.label}</text>`;
   }).join('');
 
   const edgesSvg = edges.map(e => {
-    const from = positions[e.from], to = positions[e.to];
-    if (!from || !to) return '';
-    const x1 = from.x + nodeW/2, y1 = from.y + nodeH;
-    const x2 = to.x + nodeW/2, y2 = to.y;
-    return `
-      <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="0" class="flow-edge"/>
-      ${e.label ? `<text x="${(x1+x2)/2 + 6}" y="${(y1+y2)/2}" font-size="10" fill="#64748b" font-family="DM Sans,sans-serif">${e.label}</text>` : ''}
-    `;
+    const from=positions[e.from], to=positions[e.to];
+    if(!from||!to) return '';
+    const x1=from.x+nodeW/2, y1=from.y+nodeH, x2=to.x+nodeW/2, y2=to.y;
+    return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)" class="flow-edge"/>
+      ${e.label?`<text x="${(x1+x2)/2+6}" y="${(y1+y2)/2}" font-size="10" fill="#64748b" font-family="DM Sans,sans-serif">${e.label}</text>`:''}`;
   }).join('');
 
-  return `
-    <svg class="visual-svg" viewBox="0 0 ${svgW} ${totalH}" height="${totalH}">
-      <defs>
-        <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
-        </marker>
-      </defs>
-      ${edgesSvg}
-      ${nodesSvg}
-    </svg>`;
+  return `<svg class="visual-svg" viewBox="0 0 ${svgW} ${totalH}" height="${totalH}">
+    <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/></marker></defs>
+    ${edgesSvg}${nodesSvg}</svg>`;
 }
 
 function renderBarchart(data) {
-  const labels = data.labels || [];
-  const values = data.values || [];
-  const unit = data.unit || '';
-  const highlight = data.color_highlight !== undefined ? data.color_highlight : -1;
-  const max = Math.max(...values, 1);
-  const barW = Math.min(60, Math.floor(460 / labels.length) - 12);
-  const chartH = 160, svgW = 500, padL = 40, padB = 50;
+  const labels=data.labels||[], values=data.values||[], unit=data.unit||'';
+  const highlight=data.color_highlight!==undefined?data.color_highlight:-1;
+  const max=Math.max(...values,1);
+  const barW=Math.min(60,Math.floor(460/labels.length)-12);
+  const chartH=160, svgW=500, padL=40, padB=50;
 
-  const bars = labels.map((label, i) => {
-    const barH = (values[i] / max) * chartH;
-    const x = padL + i * (barW + 12);
-    const y = chartH - barH + 20;
-    const isHL = i === highlight;
-    const fill = isHL ? '#2563eb' : '#bfdbfe';
-    const textFill = isHL ? '#1d4ed8' : '#64748b';
-    return `
-      <rect x="${x}" y="${y}" width="${barW}" height="${barH}" rx="4" fill="${fill}" class="bar" data-idx="${i}"/>
-      <text x="${x + barW/2}" y="${y - 6}" text-anchor="middle" font-size="11" font-weight="${isHL ? '600' : '400'}" fill="${textFill}" font-family="DM Sans,sans-serif">${values[i]}${unit}</text>
-      <text x="${x + barW/2}" y="${chartH + 36}" text-anchor="middle" font-size="10" fill="#64748b" font-family="DM Sans,sans-serif">${label.length > 10 ? label.substring(0,10)+'…' : label}</text>
-    `;
+  const bars = labels.map((label,i) => {
+    const barH=(values[i]/max)*chartH, x=padL+i*(barW+12), y=chartH-barH+20;
+    const isHL=i===highlight, fill=isHL?'#2563eb':'#bfdbfe', textFill=isHL?'#1d4ed8':'#64748b';
+    return `<rect x="${x}" y="${y}" width="${barW}" height="${barH}" rx="4" fill="${fill}" class="bar"/>
+      <text x="${x+barW/2}" y="${y-6}" text-anchor="middle" font-size="11" font-weight="${isHL?'600':'400'}" fill="${textFill}" font-family="DM Sans,sans-serif">${values[i]}${unit}</text>
+      <text x="${x+barW/2}" y="${chartH+36}" text-anchor="middle" font-size="10" fill="#64748b" font-family="DM Sans,sans-serif">${label.length>10?label.substring(0,10)+'…':label}</text>`;
   }).join('');
 
-  // Y axis lines
-  const lines = [0, 25, 50, 75, 100].map(v => {
-    const y = chartH - (v / max * chartH) + 20;
-    return `
-      <line x1="${padL - 5}" y1="${y}" x2="${padL + labels.length * (barW + 12)}" y2="${y}" stroke="#f1f5f9" stroke-width="1"/>
-      <text x="${padL - 8}" y="${y + 4}" text-anchor="end" font-size="9" fill="#94a3b8" font-family="DM Mono,monospace">${v}</text>
-    `;
+  const lines = [0,25,50,75,100].map(v => {
+    const y=chartH-(v/max*chartH)+20;
+    return `<line x1="${padL-5}" y1="${y}" x2="${padL+labels.length*(barW+12)}" y2="${y}" stroke="#f1f5f9" stroke-width="1"/>
+      <text x="${padL-8}" y="${y+4}" text-anchor="end" font-size="9" fill="#94a3b8" font-family="DM Mono,monospace">${v}</text>`;
   }).join('');
 
-  return `
-    <svg class="visual-svg" viewBox="0 0 ${svgW} ${chartH + padB + 20}" height="${chartH + padB + 20}">
-      ${lines}
-      ${bars}
-    </svg>`;
+  return `<svg class="visual-svg" viewBox="0 0 ${svgW} ${chartH+padB+20}" height="${chartH+padB+20}">${lines}${bars}</svg>`;
 }
 
 function renderTimeline(data) {
-  const events = data.events || [];
-  const svgW = 500, lineY = 60;
-  const step = Math.min(120, (svgW - 60) / Math.max(events.length - 1, 1));
-
-  const dots = events.map((e, i) => {
-    const x = 30 + i * step;
-    const above = i % 2 === 0;
-    return `
-      <circle cx="${x}" cy="${lineY}" r="7" fill="#2563eb" stroke="white" stroke-width="2"/>
-      <text x="${x}" y="${above ? lineY - 16 : lineY + 26}" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a" font-family="DM Sans,sans-serif">${e.year}</text>
-      <text x="${x}" y="${above ? lineY - 30 : lineY + 40}" text-anchor="middle" font-size="10" fill="#64748b" font-family="DM Sans,sans-serif">${e.label.length > 14 ? e.label.substring(0,14)+'…' : e.label}</text>
-      <line x1="${x}" y1="${above ? lineY - 7 : lineY + 7}" x2="${x}" y2="${above ? lineY - 12 : lineY + 12}" stroke="#94a3b8" stroke-width="1.5"/>
-    `;
+  const events=data.events||[], svgW=500, lineY=60;
+  const step=Math.min(120,(svgW-60)/Math.max(events.length-1,1));
+  const dots = events.map((e,i) => {
+    const x=30+i*step, above=i%2===0;
+    return `<circle cx="${x}" cy="${lineY}" r="7" fill="#2563eb" stroke="white" stroke-width="2"/>
+      <text x="${x}" y="${above?lineY-16:lineY+26}" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a" font-family="DM Sans,sans-serif">${e.year}</text>
+      <text x="${x}" y="${above?lineY-30:lineY+40}" text-anchor="middle" font-size="10" fill="#64748b" font-family="DM Sans,sans-serif">${e.label.length>14?e.label.substring(0,14)+'…':e.label}</text>
+      <line x1="${x}" y1="${above?lineY-7:lineY+7}" x2="${x}" y2="${above?lineY-12:lineY+12}" stroke="#94a3b8" stroke-width="1.5"/>`;
   }).join('');
-
-  const lastX = 30 + (events.length - 1) * step;
-  return `
-    <svg class="visual-svg" viewBox="0 0 ${svgW} 100" height="100">
-      <line x1="20" y1="${lineY}" x2="${lastX + 20}" y2="${lineY}" stroke="#e2e8f0" stroke-width="2"/>
-      ${dots}
-    </svg>`;
+  const lastX=30+(events.length-1)*step;
+  return `<svg class="visual-svg" viewBox="0 0 ${svgW} 100" height="100">
+    <line x1="20" y1="${lineY}" x2="${lastX+20}" y2="${lineY}" stroke="#e2e8f0" stroke-width="2"/>${dots}</svg>`;
 }
 
 function renderConceptMap(data) {
-  const center = data.center || '';
-  const branches = data.branches || [];
-  const svgW = 500, svgH = 300, cx = 250, cy = 150;
-  const branchR = 110, childR = 170;
-
-  const angleStep = (2 * Math.PI) / Math.max(branches.length, 1);
-
-  let svgContent = `
-    <ellipse cx="${cx}" cy="${cy}" rx="65" ry="28" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5"/>
-    <text x="${cx}" y="${cy + 5}" text-anchor="middle" font-size="13" font-weight="600" fill="#1e40af" font-family="DM Sans,sans-serif">${center}</text>
-  `;
-
-  branches.forEach((branch, bi) => {
-    const angle = bi * angleStep - Math.PI/2;
-    const bx = cx + branchR * Math.cos(angle);
-    const by = cy + branchR * Math.sin(angle);
-
-    svgContent += `
-      <line x1="${cx + 65 * Math.cos(angle)}" y1="${cy + 28 * Math.sin(angle)}" x2="${bx}" y2="${by}" stroke="#cbd5e1" stroke-width="1.5"/>
+  const center=data.center||'', branches=data.branches||[];
+  const svgW=500,svgH=300,cx=250,cy=150,branchR=110,childR=170;
+  const angleStep=(2*Math.PI)/Math.max(branches.length,1);
+  let svgContent=`<ellipse cx="${cx}" cy="${cy}" rx="65" ry="28" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5"/>
+    <text x="${cx}" y="${cy+5}" text-anchor="middle" font-size="13" font-weight="600" fill="#1e40af" font-family="DM Sans,sans-serif">${center}</text>`;
+  branches.forEach((branch,bi) => {
+    const angle=bi*angleStep-Math.PI/2, bx=cx+branchR*Math.cos(angle), by=cy+branchR*Math.sin(angle);
+    svgContent+=`<line x1="${cx+65*Math.cos(angle)}" y1="${cy+28*Math.sin(angle)}" x2="${bx}" y2="${by}" stroke="#cbd5e1" stroke-width="1.5"/>
       <ellipse cx="${bx}" cy="${by}" rx="48" ry="20" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
-      <text x="${bx}" y="${by + 5}" text-anchor="middle" font-size="11" font-weight="500" fill="#166534" font-family="DM Sans,sans-serif">${branch.label.length > 12 ? branch.label.substring(0,12)+'…' : branch.label}</text>
-    `;
-
-    (branch.children || []).forEach((child, ci) => {
-      const childAngle = angle + (ci - (branch.children.length-1)/2) * 0.5;
-      const chx = cx + childR * Math.cos(childAngle);
-      const chy = cy + childR * Math.sin(childAngle);
-      svgContent += `
-        <line x1="${bx}" y1="${by}" x2="${chx}" y2="${chy}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,2"/>
-        <rect x="${chx - 38}" y="${chy - 12}" width="76" height="24" rx="12" fill="#fafaf9" stroke="#e2e8f0" stroke-width="1"/>
-        <text x="${chx}" y="${chy + 5}" text-anchor="middle" font-size="10" fill="#64748b" font-family="DM Sans,sans-serif">${child.length > 12 ? child.substring(0,12)+'…' : child}</text>
-      `;
+      <text x="${bx}" y="${by+5}" text-anchor="middle" font-size="11" font-weight="500" fill="#166534" font-family="DM Sans,sans-serif">${branch.label.length>12?branch.label.substring(0,12)+'…':branch.label}</text>`;
+    (branch.children||[]).forEach((child,ci) => {
+      const childAngle=angle+(ci-(branch.children.length-1)/2)*0.5;
+      const chx=cx+childR*Math.cos(childAngle), chy=cy+childR*Math.sin(childAngle);
+      svgContent+=`<line x1="${bx}" y1="${by}" x2="${chx}" y2="${chy}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,2"/>
+        <rect x="${chx-38}" y="${chy-12}" width="76" height="24" rx="12" fill="#fafaf9" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="${chx}" y="${chy+5}" text-anchor="middle" font-size="10" fill="#64748b" font-family="DM Sans,sans-serif">${child.length>12?child.substring(0,12)+'…':child}</text>`;
     });
   });
-
   return `<svg class="visual-svg" viewBox="0 0 ${svgW} ${svgH}" height="${svgH}">${svgContent}</svg>`;
 }
 
 function renderTable(data) {
-  const headers = data.headers || [];
-  const rows = data.rows || [];
-  const colW = Math.floor(100 / headers.length);
-
-  return `
-    <div style="overflow-x:auto">
-    <table style="width:100%;border-collapse:collapse;font-size:12px;font-family:'DM Sans',sans-serif">
-      <thead>
-        <tr>
-          ${headers.map(h => `<th style="padding:8px 12px;background:#f8fafc;border:1px solid #e2e8f0;font-weight:600;text-align:left;color:#475569">${h}</th>`).join('')}
-        </tr>
-      </thead>
-      <tbody>
-        ${rows.map((row, i) => `
-          <tr style="background:${i%2===0?'white':'#fafaf9'}">
-            ${row.map(cell => `<td style="padding:8px 12px;border:1px solid #e2e8f0;color:#1a1a1a">${cell}</td>`).join('')}
-          </tr>
-        `).join('')}
-      </tbody>
-    </table>
-    </div>`;
+  const headers=data.headers||[], rows=data.rows||[];
+  return `<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px;font-family:'DM Sans',sans-serif">
+    <thead><tr>${headers.map(h=>`<th style="padding:8px 12px;background:#f8fafc;border:1px solid #e2e8f0;font-weight:600;text-align:left;color:#475569">${h}</th>`).join('')}</tr></thead>
+    <tbody>${rows.map((row,i)=>`<tr style="background:${i%2===0?'white':'#fafaf9'}">${row.map(cell=>`<td style="padding:8px 12px;border:1px solid #e2e8f0;color:#1a1a1a">${cell}</td>`).join('')}</tr>`).join('')}</tbody>
+  </table></div>`;
 }
 
 function renderComparison(data) {
-  const left = data.left || {}, right = data.right || {};
-  return `
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px">
-        <div style="font-size:12px;font-weight:600;color:#1d4ed8;margin-bottom:10px">${left.title || 'Option A'}</div>
-        ${(left.points||[]).map(p => `<div style="font-size:12px;color:#374151;padding:4px 0;border-bottom:1px solid #dbeafe;display:flex;gap:6px"><span style="color:#3b82f6">•</span>${p}</div>`).join('')}
-      </div>
-      <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:14px">
-        <div style="font-size:12px;font-weight:600;color:#166534;margin-bottom:10px">${right.title || 'Option B'}</div>
-        ${(right.points||[]).map(p => `<div style="font-size:12px;color:#374151;padding:4px 0;border-bottom:1px solid #dcfce7;display:flex;gap:6px"><span style="color:#22c55e">•</span>${p}</div>`).join('')}
-      </div>
-    </div>`;
+  const left=data.left||{}, right=data.right||{};
+  return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px">
+      <div style="font-size:12px;font-weight:600;color:#1d4ed8;margin-bottom:10px">${left.title||'Option A'}</div>
+      ${(left.points||[]).map(p=>`<div style="font-size:12px;color:#374151;padding:4px 0;border-bottom:1px solid #dbeafe;display:flex;gap:6px"><span style="color:#3b82f6">•</span>${p}</div>`).join('')}
+    </div>
+    <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:14px">
+      <div style="font-size:12px;font-weight:600;color:#166534;margin-bottom:10px">${right.title||'Option B'}</div>
+      ${(right.points||[]).map(p=>`<div style="font-size:12px;color:#374151;padding:4px 0;border-bottom:1px solid #dcfce7;display:flex;gap:6px"><span style="color:#22c55e">•</span>${p}</div>`).join('')}
+    </div>
+  </div>`;
 }
 
 function animateVisual(container) {
-  // Animate bars
-  container.querySelectorAll('.bar').forEach((bar, i) => {
-    const finalH = bar.getAttribute('height');
-    const finalY = bar.getAttribute('y');
-    bar.setAttribute('height', '0');
-    bar.setAttribute('y', parseFloat(finalY) + parseFloat(finalH));
+  container.querySelectorAll('.bar').forEach((bar,i) => {
+    const finalH=bar.getAttribute('height'), finalY=bar.getAttribute('y');
+    bar.setAttribute('height','0');
+    bar.setAttribute('y',parseFloat(finalY)+parseFloat(finalH));
     setTimeout(() => {
-      bar.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-      bar.setAttribute('height', finalH);
-      bar.setAttribute('y', finalY);
-    }, i * 80);
+      bar.style.transition='all 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+      bar.setAttribute('height',finalH); bar.setAttribute('y',finalY);
+    }, i*80);
   });
-
-  // Animate edges
-  container.querySelectorAll('.flow-edge').forEach((edge, i) => {
-    edge.style.opacity = '0';
-    setTimeout(() => {
-      edge.style.transition = 'opacity 0.3s';
-      edge.style.opacity = '1';
-    }, i * 150);
+  container.querySelectorAll('.flow-edge').forEach((edge,i) => {
+    edge.style.opacity='0';
+    setTimeout(() => { edge.style.transition='opacity 0.3s'; edge.style.opacity='1'; }, i*150);
   });
 }
 
-// ─── Utils ───────────────────────────────────────────────────────
 function escapeHtml(text) {
   return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
 function resetApp() {
-  document.getElementById('uploadScreen').style.display = 'flex';
-  document.getElementById('uploadZone').style.display = 'block';
+  currentSessionId='';
+  questionCount=0;
+  document.getElementById('uploadScreen').style.display='flex';
+  document.getElementById('uploadZone').style.display='block';
   document.getElementById('uploadLoading').classList.remove('visible');
   document.getElementById('chatScreen').classList.remove('visible');
-  document.getElementById('paperIndicator').style.display = 'none';
-  document.getElementById('messages').innerHTML = '';
-  document.getElementById('fileInput').value = '';
+  document.getElementById('paperIndicator').style.display='none';
+  document.getElementById('messages').innerHTML='';
+  document.getElementById('fileInput').value='';
+  document.getElementById('sidebarDownload').classList.remove('visible');  // NEW
 }
 </script>
 </body>
