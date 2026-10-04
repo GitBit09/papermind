@@ -10,6 +10,52 @@ app = Flask(__name__)
 # Store paper text in memory (avoids cookie size issues)
 paper_store = {}
 
+# Cache the best available model so we only probe once per session
+_cached_model = None
+
+def get_best_model(api_key):
+    """Dynamically find a working model for this specific API key."""
+    global _cached_model
+    if _cached_model:
+        return _cached_model
+
+    client = Groq(api_key=api_key)
+    
+    try:
+        # Fetch all models the API key can technically "see"
+        all_models = client.models.list().data
+        
+        # Sort so we try llama models first, then gemma, etc. 
+        # Exclude audio/vision models like whisper or tts
+        text_models = [
+            m.id for m in all_models 
+            if "whisper" not in m.id and "tts" not in m.id and "vision" not in m.id
+        ]
+        text_models.sort(reverse=True) # basic sort to put newer/larger models higher
+
+        # Probe each model until one actually works
+        for model in text_models:
+            try:
+                client.chat.completions.create(
+                    model=model,
+                    max_tokens=1,
+                    messages=[{"role": "user", "content": "test"}]
+                )
+                _cached_model = model
+                return model
+            except Exception:
+                continue
+                
+        # If we exhausted everything, just return the first text model and let it error out normally
+        if text_models:
+            return text_models[0]
+            
+    except Exception:
+        pass
+
+    return "llama3-8b-8192"
+
+
 SYSTEM_PROMPT = """You are PaperMind, an expert research paper analyst. You answer questions about research papers with both explanation AND a visual specification.
 
 For EVERY response, you must return EXACTLY this JSON format (no markdown, no extra text):
@@ -80,7 +126,11 @@ RULES:
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    resp = make_response(render_template('index.html'))
+    resp.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
 
 
 @app.route('/upload', methods=['POST'])
@@ -116,9 +166,10 @@ def upload_paper():
         }
 
         client = Groq(api_key=api_key)
+        model = get_best_model(api_key)
 
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=model,
             max_tokens=1000,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
@@ -179,8 +230,9 @@ def chat():
             "content": f"Paper content:\n{paper_text}\n\nQuestion: {question}"
         })
 
+        model = get_best_model(api_key)
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=model,
             max_tokens=1500,
             messages=messages
         )

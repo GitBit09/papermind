@@ -415,15 +415,23 @@ let isLoading = false;
 let currentSessionId = '';
 let questionCount = 0;  // NEW
 
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+  else console.warn('Element not found:', id);
+}
+
 function saveKey() {
   const key = document.getElementById('apiKeyInput').value.trim();
   if (key.startsWith('gsk_')) {
     sessionStorage.setItem('groq_key', key);
-    document.getElementById('keyStatus').textContent = '✓ Saved';
-    document.getElementById('keyStatus').style.color = '#16a34a';
+    setText('keyStatus', '✓ Saved');
+    const el = document.getElementById('keyStatus');
+    if (el) el.style.color = '#16a34a';
   } else {
-    document.getElementById('keyStatus').textContent = '✗ Invalid key';
-    document.getElementById('keyStatus').style.color = '#ef4444';
+    setText('keyStatus', '✗ Invalid key');
+    const el = document.getElementById('keyStatus');
+    if (el) el.style.color = '#ef4444';
   }
 }
 
@@ -471,13 +479,15 @@ async function uploadFile(file) {
     if (!data.success) throw new Error(data.error);
 
     currentSessionId = data.session_id;
-    questionCount = 0;  // NEW: reset counter
+    questionCount = 0;
 
-    document.getElementById('paperName').textContent = data.paper_name.replace('.pdf','');
-    document.getElementById('pageCount').textContent = data.page_count + 'p';
-    document.getElementById('paperIndicator').style.display = 'flex';
-    document.getElementById('sidebarPaperName').textContent = data.paper_name;
-    document.getElementById('sidebarPageCount').textContent = data.page_count + ' pages';
+    setText('paperName', data.paper_name.replace('.pdf',''));
+    setText('pageCount', data.page_count + 'p');
+    const pi = document.getElementById('paperIndicator');
+    if (pi) pi.style.display = 'flex';
+    
+    setText('sidebarPaperName', data.paper_name);
+    setText('sidebarPageCount', data.page_count + ' pages');
 
     renderSuggestedQuestions();
     document.getElementById('uploadScreen').style.display = 'none';
@@ -625,8 +635,8 @@ async function sendMessage() {
 async function downloadReport() {
   if (!currentSessionId) return;
   const btn = document.getElementById('downloadReportBtn');
-  btn.disabled = true;
-  btn.textContent = '⏳ Generating…';
+  if (btn) btn.disabled = true;
+  setText('downloadReportBtn', '⏳ Generating…');
 
   try {
     const resp = await fetch(`/report?session_id=${currentSessionId}`, {
@@ -636,8 +646,8 @@ async function downloadReport() {
     if (!resp.ok) {
       const data = await resp.json();
       alert(data.error || 'Failed to generate report');
-      btn.disabled = false;
-      btn.textContent = '⬇ Download Full Report';
+      if (btn) btn.disabled = false;
+      setText('downloadReportBtn', '⬇ Download Full Report');
       return;
     }
 
@@ -656,8 +666,8 @@ async function downloadReport() {
     alert('Download failed: ' + e.message);
   }
 
-  btn.disabled = false;
-  btn.textContent = '⬇ Download Full Report';
+  if (btn) btn.disabled = false;
+  setText('downloadReportBtn', '⬇ Download Full Report');
 }
 
 function scrollBottom() {
