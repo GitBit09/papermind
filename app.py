@@ -45,7 +45,18 @@ def get_best_model(api_key):
             m.id for m in all_models 
             if "whisper" not in m.id and "tts" not in m.id and "vision" not in m.id
         ]
-        text_models.sort(reverse=True) # basic sort to put newer/larger models higher
+        
+        def score_model(name):
+            name = name.lower()
+            score = 0
+            if 'llama-3' in name or 'llama3' in name: score += 100
+            if '8b' in name: score += 50
+            if 'instant' in name: score += 20
+            if 'versatile' in name: score += 10
+            if 'qwen' in name: score -= 50  # Very low free tier limits
+            return score
+            
+        text_models.sort(key=score_model, reverse=True)
 
         # Probe each model until one actually works
         for model in text_models:
