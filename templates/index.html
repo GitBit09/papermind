@@ -326,9 +326,6 @@ body {
     <span class="pages" id="pageCount">0p</span>
   </div>
   <div class="topbar-right">
-    <input type="password" id="apiKeyInput" placeholder="gsk_... (Groq API key)" />
-    <button class="new-btn" onclick="saveKey()" style="border-color:var(--accent);color:var(--accent)">Save Key</button>
-    <span id="keyStatus" style="font-size:11px;color:var(--muted)"></span>
     <button class="new-btn" onclick="resetApp()">New Paper</button>
   </div>
 </div>
@@ -369,10 +366,6 @@ body {
       </div>
     </div>
 
-    <p style="margin-top:20px;font-size:11px;color:var(--muted);text-align:center">
-      Requires a free Groq API key —
-      <a href="https://console.groq.com" target="_blank" style="color:var(--accent);text-decoration:none">get one free at console.groq.com</a>
-    </p>
   </div>
 
   <div class="chat-screen" id="chatScreen">
@@ -421,22 +414,8 @@ function setText(id, text) {
   else console.warn('Element not found:', id);
 }
 
-function saveKey() {
-  const key = document.getElementById('apiKeyInput').value.trim();
-  if (key.startsWith('gsk_')) {
-    sessionStorage.setItem('groq_key', key);
-    setText('keyStatus', '✓ Saved');
-    const el = document.getElementById('keyStatus');
-    if (el) el.style.color = '#16a34a';
-  } else {
-    setText('keyStatus', '✗ Invalid key');
-    const el = document.getElementById('keyStatus');
-    if (el) el.style.color = '#ef4444';
-  }
-}
-
 function getKey() {
-  return sessionStorage.getItem('groq_key') || '';
+  return '';
 }
 
 function handleDragOver(e) {
@@ -458,11 +437,6 @@ function handleFileSelect(e) {
 }
 
 async function uploadFile(file) {
-  if (!getKey()) {
-    alert('Please enter your Groq API key in the top bar first.\nGet one free at console.groq.com');
-    return;
-  }
-
   document.getElementById('uploadZone').style.display = 'none';
   document.getElementById('uploadLoading').classList.add('visible');
 

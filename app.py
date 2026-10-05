@@ -3,7 +3,11 @@ from groq import Groq
 import json
 import re
 import os
+import random
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
 
 app = Flask(__name__)
 
@@ -12,6 +16,16 @@ paper_store = {}
 
 # Cache the best available model so we only probe once per session
 _cached_model = None
+
+def get_api_key():
+    """Return a random API key from a comma-separated list in the .env file."""
+    keys_str = os.environ.get('GROQ_API_KEY', '')
+    keys = [k.strip() for k in keys_str.replace('\n', ',').split(',') if k.strip().startswith('gsk_')]
+    if keys:
+        chosen = random.choice(keys)
+        print(f"DEBUG: Using API Key: {chosen[:10]}...")
+        return chosen
+    return None
 
 def get_best_model(api_key):
     """Dynamically find a working model for this specific API key."""
@@ -142,9 +156,9 @@ def upload_paper():
     if not file.filename.endswith('.pdf'):
         return jsonify({'error': 'Only PDF files supported'}), 400
 
-    api_key = request.headers.get('X-API-Key', '')
-    if not api_key or not api_key.startswith('gsk_'):
-        return jsonify({'error': 'Valid Groq API key required (starts with gsk_)'}), 401
+    api_key = get_api_key()
+    if not api_key:
+        return jsonify({'error': 'Server misconfiguration: No valid GROQ_API_KEY found in environment.'}), 500
 
     try:
         import pymupdf
@@ -205,9 +219,9 @@ def chat():
     if not question:
         return jsonify({'error': 'No question provided'}), 400
 
-    api_key = request.headers.get('X-API-Key', '')
-    if not api_key or not api_key.startswith('gsk_'):
-        return jsonify({'error': 'Valid Groq API key required (starts with gsk_)'}), 401
+    api_key = get_api_key()
+    if not api_key:
+        return jsonify({'error': 'Server misconfiguration: No valid GROQ_API_KEY found in environment.'}), 500
 
     if not session_id or session_id not in paper_store:
         return jsonify({'error': 'No paper uploaded. Please upload a paper first.'}), 400
